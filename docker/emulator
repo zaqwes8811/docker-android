@@ -96,6 +96,7 @@ RUN echo ${APP_PATH}/mixins/configs/display/.fehbg >> /etc/xdg/openbox/autostart
 #===================
 RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
     nano \
+    qemu-kvm \
  && apt autoremove -y \
  && apt clean all \
  && rm -rf /var/lib/apt/lists/*
@@ -103,6 +104,11 @@ RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
 COPY Toren1BD.posters /opt/android/emulator/resources/
 COPY qr.png /opt/android/emulator/resources/
 RUN chown -R 1300:1301 /opt/android/emulator/resources/
+
+# No such file in this time
+#RUN chown 1300:1301 /dev/kvm 
+RUN addgroup kvm 
+#RUN adduser 1300:1301 kvm
 
 #==================
 # Use created user

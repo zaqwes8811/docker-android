@@ -133,15 +133,17 @@ class Emulator(Device):
             self.logger.info(f"{self.device_type} is created!")
 
     def change_permission(self) -> None:
-        kvm_path = "/dev/kvm"
-        if os.path.exists(kvm_path):
-            cmds = (f"sudo chown 1300:1301 {kvm_path}",
-                    "sudo sed -i '1d' /etc/passwd")
-            for c in cmds:
-                subprocess.check_call(c, shell=True)
-            self.logger.info("KVM permission is granted!")
-        else:
-            raise RuntimeError("/dev/kvm cannot be found!")
+        pass
+        
+        # kvm_path = "/dev/kvm"
+        # if os.path.exists(kvm_path):
+        #     cmds = (f"sudo chown 1300:1301 {kvm_path}",
+        #             "sudo sed -i '1d' /etc/passwd")
+        #     for c in cmds:
+        #         subprocess.check_call(c, shell=True)
+        #     self.logger.info("KVM permission is granted!")
+        # else:
+        #     raise RuntimeError("/dev/kvm cannot be found!")
 
     def deploy(self):
         self.logger.info(f"Deploying the {self.device_type}")
