@@ -91,6 +91,19 @@ RUN chown -R 1300:1301 ${APP_PATH} \
 #===================
 RUN echo ${APP_PATH}/mixins/configs/display/.fehbg >> /etc/xdg/openbox/autostart
 
+#===================
+# Extra packages
+#===================
+RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
+    nano \
+ && apt autoremove -y \
+ && apt clean all \
+ && rm -rf /var/lib/apt/lists/*
+
+COPY Toren1BD.posters /opt/android/emulator/resources/
+COPY qr.png /opt/android/emulator/resources/
+RUN chown -R 1300:1301 /opt/android/emulator/resources/
+
 #==================
 # Use created user
 #==================
@@ -99,6 +112,7 @@ ENV LOG_PATH=${WORK_PATH}/logs \
     WEB_LOG_PORT=9000
 EXPOSE 9000
 RUN mkdir -p ${LOG_PATH}
+
 
 #=========
 # Run App

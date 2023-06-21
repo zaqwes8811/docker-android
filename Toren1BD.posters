@@ -1,0 +1,12 @@
+poster wall
+size 2 2
+position 0 0 -5
+rotation 0 0 0
+default poster.png
+
+
+poster custom
+size 1 1
+position 0 0 -1.5
+rotation 0 0 0
+default qr.png
