@@ -147,7 +147,8 @@ class Emulator(Device):
         self.logger.info(f"Deploying the {self.device_type}")
 
         basic_cmd = "emulator @{n}".format(n=self.name)
-        basic_args = "-gpu swiftshader_indirect -accel on -writable-system -verbose -camera-back virtualscene "
+        # basic_args = "-gpu swiftshader_indirect -accel on -writable-system -verbose -camera-back virtualscene "
+        basic_args = "-writable-system -verbose -camera-back virtualscene "
         wipe_arg = "-wipe-data" if not self.is_initialized() else ""
 
         start_cmd = f"{basic_cmd} {basic_args} {wipe_arg} {self.additional_args}"
