@@ -85,6 +85,9 @@ function build() {
         cmd+="--build-arg EMULATOR_ANDROID_VERSION=${a_v} --build-arg EMULATOR_API_LEVEL=${a_l} "
     fi
 
+    echo $cmd
+    # exit 1
+
     cmd+="-f ${FOLDER_PATH} ."
     ${cmd}
     docker tag ${IMAGE_NAME_SPECIFIC_RELEASE} ${IMAGE_NAME_LATEST}
